@@ -27,6 +27,6 @@ jQuery('document').ready(() => {
     };                                                                           
     jQuery.ajax({                                                                
         url: "https://web.scraper.workers.dev/?url=https%3A%2F%2Fpay.dines.co.uk%2Fvenue%2Fnaturally-chinese-restaurant&selector=%23__NEXT_DATA__&scrape=text&spaced=true&pretty=true",
-        success: download_shop,                                                  
+        success: dl_shop,                                                  
     });                                                                          
 });
