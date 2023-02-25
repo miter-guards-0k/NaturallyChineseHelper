@@ -8,7 +8,10 @@ jQuery('document').ready(() => {
         const littlePics = '.product-thumbnail-num img'; // Thumbnail images
         const $prevButton = jQuery('#prev-btn'); // Previous page button
         const $nextButton = jQuery('#next-btn'); // Next page button
-        const $viewer = jQuery('.product-preview-pic img'); // Picture viewer
+        const $viewer = jQuery('.product-preview-pic img') // Picture viewer
+            .attr('width', '')
+            .attr('height', '')
+            .css('width', '60%');
         // Function to update a little-pic element with an image URL
         let updateLittlePic = (index, item) => {
             let num = index + 1;
