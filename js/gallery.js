@@ -15,7 +15,7 @@ jQuery('document').ready(() => {
             if ( num < 10 ) num = '0' + num;
             const $pic = jQuery(littlePics.replace(/num/, num));
             $pic.attr('src', imageUrl);
-            $pic.off('click').on('click', () => $viewer.attr('src', imageUrl);
+            $pic.off('click').on('click', () => $viewer.attr('src', imageUrl));
         };
         // Function to update the page controls (prev/next buttons)
         let updatePageControls = () => {
