@@ -12,15 +12,15 @@ jQuery('document').ready(() => {
         // Function to update a little-pic element with an image URL
         let updateLittlePic = (index, imageUrl) => {
             let num = index + 1;
-            if ( num < 10 ) num = '0' + num;
+            if (num < 10) num = '0' + num;
             const $pic = jQuery(littlePics.replace(/num/, num));
             $pic.attr('src', imageUrl);
             $pic.off('click').on('click', () => $viewer.attr('src', imageUrl));
         };
         // Function to update the page controls (prev/next buttons)
         let updatePageControls = () => {
-            if (currentPage === 1) $prevButton.hide() else $prevButton.show();
-            if (currentPage >= Math.ceil(master_list.length / PAGE_SIZE)) $nextButton.hide() else $nextButton.show();;
+            let prev = (currentPage === 1) ? $prevButton.hide() : $prevButton.show();
+            let next = (currentPage >= Math.ceil(master_list.length / PAGE_SIZE)) ? $nextButton.hide() : $nextButton.show();;
         };
         // Function to show the pictures for the current page
         let showCurrentPage = () => {
