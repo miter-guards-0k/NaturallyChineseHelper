@@ -11,7 +11,8 @@ jQuery('document').ready(() => {
         const $viewer = jQuery('.product-preview-pic img') // Picture viewer
             .attr('width', '')
             .attr('height', '')
-            .css('width', '60%');
+            .css('height', '600px');
+        const info = '.product-preview-info .product-what';
         // Function to update a little-pic element with an image URL
         let updateLittlePic = (index, item) => {
             let num = index + 1;
@@ -19,11 +20,11 @@ jQuery('document').ready(() => {
             const $pic = jQuery(littlePics.replace(/num/, num));
             $pic.attr('src', item.image);
             $pic.attr('title', item.name);
-            $pic.attr('alt', item.name);
+            $pic.attr('alt', item.desc);
             let update = () => {
                 $viewer.attr('src', item.image);
-                $viewer.attr('title', item.name);
-                $viewer.attr('alt', item.name);
+                jQuery(info.replace(/what/, 'name')).text(item.name);
+                jQuery(info.replace(/what/, 'desc')).text(item.desc);
             };
             if (num == '01') update();
             $pic.off('click').on('click', update);
@@ -77,6 +78,7 @@ jQuery('document').ready(() => {
                 if (item.image) items.push({
                     id: item.id,
                     name: item.name,
+                    desc: item.description,
                     image: item.image,
                     price: item.value,
                 });
