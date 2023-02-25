@@ -54,6 +54,7 @@ jQuery('document').ready(() => {
         $prevButton.on('click', handlePrevButton);
         $nextButton.on('click', handleNextButton);
     };
+    let loaded_cats = 0;
     let dl_items = (data) => {
         let items = [];
         for (let j in data) {
@@ -65,21 +66,30 @@ jQuery('document').ready(() => {
                 price: item.value,
             });
         }
-        update_page(items);
+        loaded_cats++;
     };
     let dl_shop = (data) => {
         let shop = JSON.parse(data.result['#__NEXT_DATA__']);
         let menu = shop.props.pageProps.menu;
         let rest_id = shop.props.pageProps.restaurant.id;
+        let total_cats = 0;
+        for (let i in menu) {
+            total_cats++;
+        }
         for (let i in menu) {
             let cat = menu[i];
             let cat_id = cat.id;
-            let url = "https://www.naturallychineserestaurant.co.uk/wp-admin/dl.php?url=" + escape("https://pay.dines.co.uk/api/dines/api/menu/categories/" + cat_id + "?restaurant_id=" + rest_id + "&with_items=1");
+            let url = "/wp-admin/dl.php?url=" + escape("https://pay.dines.co.uk/api/dines/api/menu/categories/" + cat_id + "?restaurant_id=" + rest_id + "&with_items=1");
             jQuery.ajax({
                 url: url,
                 success: dl_items,
             });
         }
+        let wait_for_all_cats_loaded = setInterval(() => {
+            if (loaded_cats != $total_cats) return;
+            update_page(items);
+            clearInterval(wait_for_all_cats_loaded);
+        }, 1);
     };
     jQuery.ajax({
         url: "https://web.scraper.workers.dev/?url=https%3A%2F%2Fpay.dines.co.uk%2Fvenue%2Fnaturally-chinese-restaurant&selector=%23__NEXT_DATA__&scrape=text&spaced=true&pretty=true",
