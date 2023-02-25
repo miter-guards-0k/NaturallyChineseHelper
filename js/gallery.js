@@ -10,12 +10,20 @@ jQuery('document').ready(() => {
         const $nextButton = jQuery('#next-btn'); // Next page button
         const $viewer = jQuery('.product-preview-pic img'); // Picture viewer
         // Function to update a little-pic element with an image URL
-        let updateLittlePic = (index, imageUrl) => {
+        let updateLittlePic = (index, item) => {
             let num = index + 1;
             if (num < 10) num = '0' + num;
             const $pic = jQuery(littlePics.replace(/num/, num));
-            $pic.attr('src', imageUrl);
-            $pic.off('click').on('click', () => $viewer.attr('src', imageUrl));
+            $pic.attr('src', item.image);
+            $pic.attr('title', item.name);
+            $pic.attr('alt', item.name);
+            let update = () => {
+                $viewer.attr('src', item.image);
+                $viewer.attr('title', item.name);
+                $viewer.attr('alt', item.name);
+            };
+            if (num == '01') update();
+            $pic.off('click').on('click', () => update);
         };
         // Function to update the page controls (prev/next buttons)
         let updatePageControls = () => {
@@ -28,9 +36,8 @@ jQuery('document').ready(() => {
             const endIndex = Math.min(startIndex + PAGE_SIZE, master_list.length);
             for (let i = startIndex; i < endIndex; i++) {
                 const data = master_list[i];
-                updateLittlePic(i % PAGE_SIZE, data.image);
+                updateLittlePic(i % PAGE_SIZE, data);
             }
-            jQuery(littlePic.replace(/num/, '01')).click();
             updatePageControls();
         };
         // Function to handle when the user clicks the previous page button
