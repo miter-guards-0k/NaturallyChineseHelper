@@ -54,25 +54,25 @@ jQuery('document').ready(() => {
         $prevButton.on('click', handlePrevButton);
         $nextButton.on('click', handleNextButton);
     };
-    let loaded_cats = 0;
-    let dl_items = (data) => {
-        let items = [];
-        for (let j in data) {
-            let item = data[j];
-            if (item.image) items.push({
-                id: item.id,
-                name: item.name,
-                image: item.image,
-                price: item.value,
-            });
-        }
-        loaded_cats++;
-    };
     let dl_shop = (data) => {
         let shop = JSON.parse(data.result['#__NEXT_DATA__']);
         let menu = shop.props.pageProps.menu;
         let rest_id = shop.props.pageProps.restaurant.id;
+        let items = [];
         let total_cats = 0;
+        let loaded_cats = 0;
+        let dl_items = (data) => {
+            for (let j in data) {
+                let item = data[j];
+                if (item.image) items.push({
+                    id: item.id,
+                    name: item.name,
+                    image: item.image,
+                    price: item.value,
+                });
+            }
+            loaded_cats++;
+        };
         for (let i in menu) {
             total_cats++;
             let cat = menu[i];
