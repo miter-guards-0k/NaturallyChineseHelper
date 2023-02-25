@@ -26,7 +26,7 @@ jQuery('document').ready(() => {
                 $viewer.attr('alt', item.name);
             };
             if (num == '01') update();
-            $pic.off('click').on('click', () => update);
+            $pic.off('click').on('click', update);
         };
         // Function to update the page controls (prev/next buttons)
         let updatePageControls = () => {
