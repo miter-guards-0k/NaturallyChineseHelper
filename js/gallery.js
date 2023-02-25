@@ -75,8 +75,6 @@ jQuery('document').ready(() => {
         let total_cats = 0;
         for (let i in menu) {
             total_cats++;
-        }
-        for (let i in menu) {
             let cat = menu[i];
             let cat_id = cat.id;
             let url = "/wp-admin/dl.php?url=" + escape("https://pay.dines.co.uk/api/dines/api/menu/categories/" + cat_id + "?restaurant_id=" + rest_id + "&with_items=1");
@@ -86,7 +84,7 @@ jQuery('document').ready(() => {
             });
         }
         let wait_for_all_cats_loaded = setInterval(() => {
-            if (loaded_cats != $total_cats) return;
+            if (loaded_cats != total_cats) return;
             update_page(items);
             clearInterval(wait_for_all_cats_loaded);
         }, 1);
