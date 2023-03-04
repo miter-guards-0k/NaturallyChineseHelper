@@ -72,10 +72,14 @@ jQuery('document').ready(() => {
         for (let i = 0; i < master_list.length; i++) {
             let item = master_list[i];
             let $picture = $wrapper.clone();
+            $picture.find('a')
+                .attr('href', '#');
+            $picture.find('.fusion-masonry-element-container')
+                .attr('background-image', '');
             $picture.find('img')
                 .attr('src', item.image)
                 .attr('title', item.name)
-                .attr('alt', item.alt);
+                .attr('alt', item.desc);
             $container.append($picture);
         }
     };
