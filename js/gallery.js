@@ -76,7 +76,7 @@ jQuery('document').ready(() => {
                 .attr('src', item.image)
                 .attr('title', item.name)
                 .attr('alt', item.alt);
-            $container.append($piture);
+            $container.append($picture);
         }
     };
 
