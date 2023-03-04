@@ -71,7 +71,7 @@ jQuery('document').ready(() => {
         let $container = jQuery('.list-of-pics').html('');
         for (let i = 0; i < master_list.length; i++) {
             let item = master_list[i];
-            let $picture = $wrapper.clone();
+            let $picture = $wrapper.clone().show();
             $picture.find('a')
                 .attr('href', '#');
             $picture.find('.fusion-masonry-element-container')
