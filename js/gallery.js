@@ -75,7 +75,7 @@ jQuery('document').ready(() => {
             $picture.find('a')
                 .attr('href', '#');
             $picture.find('.fusion-masonry-element-container')
-                .attr('background-image', '');
+                .css('background-image', item.image);
             $picture.find('img')
                 .attr('src', item.image)
                 .attr('title', item.name)
