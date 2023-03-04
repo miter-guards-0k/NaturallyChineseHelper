@@ -1,6 +1,6 @@
 jQuery('document').ready(() => {
     if (!location.href.match(/\/gallery/)) return;
-    let update_page = (master_list) => {
+    let update_slide = (master_list) => {
         // Constants
         const PAGE_SIZE = 10; // Number of pictures to show per page
         // Variables
@@ -65,6 +65,26 @@ jQuery('document').ready(() => {
         $prevButton.on('click', handlePrevButton);
         $nextButton.on('click', handleNextButton);
     };
+
+    let update_list_of_pics = (master_list) => {
+        let $wrapper   = jQuery('.list-of-pics .fusion-gallery-image').parent().clone();
+        let $container = jQuery('.list-of-pics').html('');
+        for (let i = 0; i < master_list.length; i++) {
+            let item = master_list[i];
+            let $picture = $wrapper.clone();
+            $picture.find('img')
+                .attr('src', item.image)
+                .attr('title', item.name)
+                .attr('alt', item.alt);
+            $container.append($piture);
+        }
+    };
+
+    let update_page = (master_list) => {
+        update_slide(master_list);
+        update_list_of_pics(master_list);
+    };
+
     let dl_shop = (data) => {
         let shop = JSON.parse(data.result['#__NEXT_DATA__']);
         let menu = shop.props.pageProps.menu;
