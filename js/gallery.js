@@ -73,7 +73,7 @@ jQuery('document').ready(() => {
             $wrapper[j] = jQuery('.list-of-pics .fusion-gallery-image:nth-of-type(' + j + ')').parent().clone();
         }
 
-        let began = false, $container = jQuery('.list-of-pics').html('');
+        let $container = jQuery('.list-of-pics').html('');
 
         for (let i = 0; i < master_list.length; i++) {
             let item = master_list[i];
@@ -83,11 +83,13 @@ jQuery('document').ready(() => {
                 if (i % j == 0) $picture = $wrapper[j].clone().show();
             }
 
-            if (began) {
-                separate = ( i % 3 == 0 );
+            if (i == 0) {
+                separate = true;
             }
-            else {
-                began    = true;
+            else if (i == 3) {
+                separate = true;
+            }
+            else if ( i % 3 == 0) {
                 separate = true;
             }
 
