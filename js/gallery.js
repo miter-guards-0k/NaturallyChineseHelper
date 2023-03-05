@@ -70,7 +70,9 @@ jQuery('document').ready(() => {
         let $wrapper = [];
 
         for (let j = 0; j <= 3; j++ ) {
-            $wrapper[j] = jQuery('.list-of-pics .fusion-gallery-image:nth-of-type(' + j + ')').parent().clone();
+            let X = jQuery('.list-of-pics .fusion-gallery-image:nth-of-type(' + j + ')');
+            let Y = X.parent();
+            $wrapper[j] = Y.clone();
         }
 
         let $container = jQuery('.list-of-pics').html('');
