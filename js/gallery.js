@@ -70,9 +70,9 @@ jQuery('document').ready(() => {
         let $wrapper = [];
 
         for (let j = 0; j <= 3; j++ ) {
-            let X = jQuery('.list-of-pics .fusion-gallery-image:nth-of-type(' + j + ')');
-            let Y = X.parent();
-            $wrapper[j] = Y.clone();
+            let $X = jQuery('.list-of-pics .fusion-gallery-image:nth-of-type(' + j + ')');
+            let $Y = X.parent();
+            $wrapper[j] = $Y.clone();
         }
 
         let $container = jQuery('.list-of-pics').html('');
@@ -113,7 +113,7 @@ jQuery('document').ready(() => {
 
     let update_page = (master_list) => {
         update_slide(master_list);
-        update_list_of_pics(master_list);
+        //update_list_of_pics(master_list);
     };
 
     let dl_shop = (data) => {
