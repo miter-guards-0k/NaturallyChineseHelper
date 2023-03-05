@@ -67,11 +67,30 @@ jQuery('document').ready(() => {
     };
 
     let update_list_of_pics = (master_list) => {
-        let $wrapper   = jQuery('.list-of-pics .fusion-gallery-image').parent().clone();
-        let $container = jQuery('.list-of-pics').html('');
+        let $wrapper = [], $separator = jQuery('div').addClass('clearfix');
+
+        for (let i = 1; i <= 4; i++ ) {
+            $wrapper[i] = jQuery('.list-of-pics .fusion-gallery-image:nth-of-type('+i+')').parent().clone();
+        }
+
+        let began = false, $container = jQuery('.list-of-pics').html('');
+
         for (let i = 0; i < master_list.length; i++) {
             let item = master_list[i];
-            let $picture = $wrapper.clone().show();
+            let $picture, separate = false;
+
+            for (let j = 1; j <= 4; j++ ) {
+                if (i % j == 0) $picture = $wrapper[j].clone().show();
+            }
+
+            if (began) {
+                separate = ( i % 3 == 0 );
+            }
+            else {
+                began    = true;
+                separate = true;
+            }
+
             $picture.find('a')
                 .attr('href', '#');
             $picture.find('.fusion-masonry-element-container')
@@ -81,6 +100,8 @@ jQuery('document').ready(() => {
                 .attr('title', item.name)
                 .attr('alt', item.desc);
             $container.append($picture);
+
+            if (separate) $container.append($separator);
         }
     };
 
