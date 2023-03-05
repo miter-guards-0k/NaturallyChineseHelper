@@ -79,7 +79,7 @@ jQuery('document').ready(() => {
             let item = master_list[i];
             let $picture, separate = false;
 
-            for (let j = 1; j <= 4; j++ ) {
+            for (let j = 0; j <= 3; j++ ) {
                 if (i % j == 0) $picture = $wrapper[j].clone().show();
             }
 
@@ -101,7 +101,9 @@ jQuery('document').ready(() => {
                 .attr('alt', item.desc);
             $container.append($picture);
 
-            if (separate) $container.append(jQuery('<div class="clearfix">'));
+            if (separate) {
+                $container.append('<div class="clearfix">');
+            }
         }
     };
 
