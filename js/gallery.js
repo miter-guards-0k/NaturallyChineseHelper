@@ -69,8 +69,8 @@ jQuery('document').ready(() => {
     let update_list_of_pics = (master_list) => {
         let $wrapper = [];
 
-        for (let i = 1; i <= 4; i++ ) {
-            $wrapper[i] = jQuery('.list-of-pics .fusion-gallery-image:nth-of-type('+i+')').parent().clone();
+        for (let j = 0; j <= 3; j++ ) {
+            $wrapper[j] = jQuery('.list-of-pics .fusion-gallery-image:nth-of-type(' + j + ')').parent().clone();
         }
 
         let began = false, $container = jQuery('.list-of-pics').html('');
