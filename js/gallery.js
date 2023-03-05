@@ -67,7 +67,7 @@ jQuery('document').ready(() => {
     };
 
     let update_list_of_pics = (master_list) => {
-        let $wrapper = [], $separator = jQuery('div').addClass('clearfix');
+        let $wrapper = [];
 
         for (let i = 1; i <= 4; i++ ) {
             $wrapper[i] = jQuery('.list-of-pics .fusion-gallery-image:nth-of-type('+i+')').parent().clone();
@@ -101,7 +101,7 @@ jQuery('document').ready(() => {
                 .attr('alt', item.desc);
             $container.append($picture);
 
-            if (separate) $container.append($separator);
+            if (separate) $container.append(jQuery('<div class="clearfix">'));
         }
     };
 
