@@ -1,5 +1,6 @@
 jQuery('document').ready(() => {
     if (!location.href.match(/\/gallery/)) return;
+    if (!location.href.match(/\/mode=dev/)) return;
     let update_desktop_slide = (master_list) => {
         // Constants
         const PAGE_SIZE = 10; // Number of pictures to show per page
@@ -74,14 +75,18 @@ jQuery('document').ready(() => {
         for (let i = 0; i < master_list.length; i++) {
             let img = master_list[i].image;
             let title = master_list[i].name;
+            let label = 'image-' + i;
 
-            $gallery.append(jQuery('<div>').css('padding', '5px').addClass('fusion-grid-column').addClass('fusion-gallery-column').addClass('fusion-gallery-column-3').addClass('hover-type-none').append(
-              jQuery('<div>').addClass('fusion-gallery-image').append(
-                jQuery('<a>').attr('href', img).attr('rel', 'noreferrer').attr('data-rel', 'iLightbox[gallery_image_2]').addClass('fusion-lightbox').attr('target', '_self').append(
-                  jQuery('<img>').attr('loading', 'lazy').attr('src', img).attr('width', '2000').attr('height', '1325').attr('alt', '').attr('title', title).attr('aria-label', '23').addClass('img-responsive').addClass('wp-image-6649').attr('srcset', img + ' 200w, ' + img + ' 400w, ' + img + ' 600w, ' + img + ' 800w, ' + img + ' 1200w, ' + img + ' 2000w').attr('sizes', '(min-width: 2200px) 100vw, (min-width: 824px) 423px, (min-width: 732px) 635px, (min-width: 640px) 732px,')
+            $gallery.append(
+                jQuery('<a>').attr('label', label),
+                jQuery('<div>').css('padding', '5px').addClass('fusion-grid-column').addClass('fusion-gallery-column').addClass('fusion-gallery-column-3').addClass('hover-type-none').append(
+                  jQuery('<div>').addClass('fusion-gallery-image').append(
+                    jQuery('<a>').attr('href', '#' + label).attr('rel', 'noreferrer').attr('data-rel', 'iLightbox[gallery_image_2]').addClass('fusion-lightbox').attr('target', '_self').append(
+                      jQuery('<img>').attr('loading', 'lazy').attr('src', img).attr('width', '2000').attr('height', '1325').attr('alt', '').attr('title', title).attr('aria-label', '23').addClass('img-responsive').addClass('wp-image-6649').attr('srcset', img + ' 200w, ' + img + ' 400w, ' + img + ' 600w, ' + img + ' 800w, ' + img + ' 1200w, ' + img + ' 2000w').attr('sizes', '(min-width: 2200px) 100vw, (min-width: 824px) 423px, (min-width: 732px) 635px, (min-width: 640px) 732px,')
+                    )
+                  )
                 )
-              )
-            ).show());
+            );
 
             if ( i == 0 ) {}
             else if ( i == 1 ) {
@@ -95,6 +100,7 @@ jQuery('document').ready(() => {
                 }
             }
         }
+        jQuery('.fusion-gallery-column').css('display', 'span !important');
     };
 
     let update_slide = (master_list) => {
