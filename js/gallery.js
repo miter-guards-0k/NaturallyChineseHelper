@@ -81,7 +81,7 @@ jQuery('document').ready(() => {
                   jQuery('<img>').attr('loading', 'lazy').attr('src', img).attr('width', '2000').attr('height', '1325').attr('alt', '').attr('title', title).attr('aria-label', '23').addClass('img-responsive').addClass('wp-image-6649').attr('srcset', img + ' 200w, ' + img + ' 400w, ' + img + ' 600w, ' + img + ' 800w, ' + img + ' 1200w, ' + img + ' 2000w').attr('sizes', '(min-width: 2200px) 100vw, (min-width: 824px) 423px, (min-width: 732px) 635px, (min-width: 640px) 732px,')
                 )
               )
-            ));
+            ).show());
 
             if ( i == 0 ) {}
             else if ( i == 1 ) {
