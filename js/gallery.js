@@ -1,6 +1,6 @@
 jQuery('document').ready(() => {
     if (!location.href.match(/\/gallery/)) return;
-    if (!location.href.match(/\/mode=dev/)) return;
+    if (!location.href.match(/mode=dev/)) return;
     let update_desktop_slide = (master_list) => {
         // Constants
         const PAGE_SIZE = 10; // Number of pictures to show per page
