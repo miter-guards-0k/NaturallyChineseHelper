@@ -100,7 +100,7 @@ jQuery('document').ready(() => {
                 }
             }
         }
-        jQuery('.fusion-gallery-column').css('display', 'span !important');
+        jQuery('.fusion-gallery-column').css('display', 'block !important');
     };
 
     let update_slide = (master_list) => {
