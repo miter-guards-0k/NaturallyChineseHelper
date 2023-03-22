@@ -3,9 +3,10 @@
 use strict;
 use warnings;
 
-use Env qw( DOCUMENT_ROOT HOME );
+use Env qw( DOCUMENT_ROOT HOME PERL5OPT );
 
 $HOME = $DOCUMENT_ROOT;
 $HOME =~ s{(/htdocs)/.+}{$1};
+$PERL5OPT = "-I $HOME/cpamn/lib/perl5";
 
-system "HOME=$HOME bash";
+system @ARGV;
