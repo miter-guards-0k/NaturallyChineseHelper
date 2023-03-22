@@ -8,4 +8,4 @@ use Env qw( DOCUMENT_ROOT HOME );
 $HOME = $DOCUMENT_ROOT;
 $HOME =~ s{(/htdocs)/.+}{$1};
 
-system 'bash';
+system "HOME=$HOME bash";
