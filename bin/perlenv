@@ -3,10 +3,14 @@
 use strict;
 use warnings;
 
-use Env qw( DOCUMENT_ROOT HOME PERL5OPT );
+use Env qw( DOCUMENT_ROOT HOME PERL5OPT PATH );
 
 $HOME = $DOCUMENT_ROOT;
 $HOME =~ s{(/htdocs)/.+}{$1};
+
 $PERL5OPT = "-I $HOME/cpamn/lib/perl5";
+$PATH     = "$PATH:$HOME/bin:$HOME/cpanm/bin";
+
+mkdir "$HOME/bin" if !-d "$HOME/bin";
 
 system @ARGV;
