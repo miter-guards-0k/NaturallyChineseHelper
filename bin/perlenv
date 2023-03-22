@@ -9,7 +9,7 @@ $HOME = $DOCUMENT_ROOT;
 $HOME =~ s{(/htdocs)/.+}{$1};
 $HOME =~ s{^/[^/]+/homepages/}{/homepages/};
 
-$PERL5OPT = "-I$HOME/cpamn/lib/perl5 -Mlocal::lib=$HOME/cpanm";
+$PERL5OPT = "-I$HOME/cpanm/lib/perl5 -Mlocal::lib=$HOME/cpanm";
 $PATH     = "$PATH:$HOME/bin:$HOME/helper/bin:$HOME/cpanm/bin";
 
 mkdir "$HOME/bin" if !-d "$HOME/bin";
