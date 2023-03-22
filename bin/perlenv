@@ -2,9 +2,10 @@
 
 use strict;
 use warnings;
+
 use Env qw( DOCUMENT_ROOT HOME );
 
 $HOME = $DOCUMENT_ROOT;
 $HOME =~ s{(/htdocs)/.+}{$1};
 
-exec 'bash';
+system 'bash';
